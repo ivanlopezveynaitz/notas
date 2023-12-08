@@ -1,0 +1,79 @@
+<div class="container">
+    <div class="row">
+        {{#each notas}}
+            <div class="col-md-4">
+                <div class="card text-dark bg-light border-info mb-3">
+                    <div class="card-header">
+                        <h4 class="card-title text-dark d-flex
+                                justify-content-between align-items-center">
+                            {{titulo}}
+                            <a href="/notes/edit:{{_id}}">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                            <a href="/notes/delete:{{_id}}">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <p>{{descripcion}}</p>
+                    </div>
+                </div>
+            </div>
+        {{else}}
+            <div class="col-md-6">
+                <div class="card text-dark bg-light border-info mb-3">
+                    <div class="card-header">
+                        <h1>Hola {{usuario.nombre}}</h1>
+                        <h4 class="card-title d-flex justify-content-between align-items-center">
+                            No existen notas en la base de datos
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                            <a href="/notes/add"
+                            class="btn btn-outline-primary" type="button">Agregar una nota<a/>
+                        </div>    
+                    </div>
+                </div>
+            </div>        
+        {{/each}}
+    </div><!--Fin de div.row-->
+    <div class="row">
+        {{#if pages}}
+            <nav class="mx-auto">
+                <ul class="pagination justify-content-center">
+                    <!--Primera Página-->
+                    {{#equal current 1}}
+                        <!--Deshabilitar el primer boton de navegación -->
+                        <li class="page-item disabled mr-1">
+                            <a href="#" class="page-link">Inicio</a>
+                        </li>
+                    {{else}}
+                        <li class="page-item mr-1">
+                            <a href="/notes/1" class="page-link">Inicio</a>
+                        </li>
+                    {{/equal}}
+
+                    <!-- Páginas internas-->
+                    {{#for current pages}}
+                         {{{this}}}
+                    {{/for}}
+
+                    <!--Ultima Página-->
+                    {{#equal current pages}}
+                        <!--Deshabilitar el último boton de navegación -->
+                        <li class="page-item disabled">
+                            <a href="#" class="page-link">Fin</a>
+                        </li>
+                    {{else}}
+                        <li class="page-item">
+                            <a href="/notes/{{pages}}" class="page-link">Fin</a>
+                        </li>
+                    {{/equal}}
+
+                </ul>
+            </nav>
+        {{/if}}
+    </div>
+</div> <!--Fin de div.container-->

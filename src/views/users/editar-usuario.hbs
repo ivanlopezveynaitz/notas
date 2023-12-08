@@ -1,0 +1,77 @@
+<div class="row">
+    <div class="col-md-4 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                Actualizar usuario
+            </div>
+            <div class="card-body">
+                <form action="/users/update" method="POST">
+                     <input type="hidden" name ="id" value="{{_id}}">
+                     <div class="m-3">
+                         <label for="txtNombre" class="form-label">
+                             Nombre
+                         </label> 
+                         <input type="text" class="form-control"
+                                name="nombre" id="txtNombre"
+                                placeholder="Introduzca su nombre"
+                                value="{{nombre}}"        
+                        >
+                     </div>
+                     <div class="m-3">
+                         <label for="txtEmail" class="form-label">
+                             Email:
+                         </label>
+                         <input type="email" class="form-control"
+                                name="email" id="txtEmail"
+                                placeholder="Introduzca el email"
+                                aria-describedby="emailHelp"
+                                value="{{email}}" readonly
+                        >
+                     </div>
+                     <div class="m-3">
+                         <label for="txtPassword" class="form-label">
+                             Contraseña
+                         </label>
+                         <input type="password" class="form-control"
+                                name="password" id="txtPassword"
+                                placeholder="Introduzca la contraseña"
+                                value=""        
+                        >
+                     </div>
+                     <div class="m-3">
+                        <label for="tipo" class="form-label">
+                            Tipo de Usuario:
+                        </label> 
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="tipo" id="flexRadioDefault1"
+                                   value=1
+                                {{#if tipo}}
+                                checked
+                                {{/if}}   
+                            >
+                            <label class="form-check-label" for="flexRadioDefault1">
+                            Regular
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="tipo" id="flexRadioDefault2"
+                                value=0
+                                {{#unless tipo}}
+                                checked
+                                {{/unless}}   
+                            >
+                            <label class="form-check-label" for="flexRadioDefault2">
+                            Administrador
+                            </label>
+                        </div>    
+                     </div>
+                     <div class="m-3 d-grid gap-2">
+                          <button type="submit" class="btn btn-outline-success">
+                                  Actualizar
+                          </button>
+                     </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
